@@ -47,10 +47,10 @@ func (t *Validator) Before(point *aop.JoinPoint, methodLocation string) bool {
 					point.Result[index] = reflect.ValueOf(_error)
 					break
 				case "type-o":
-					point.Result[index] = reflect.ValueOf(web.ResultObj{Success: false, Message: _message})
+					point.Result[index] = reflect.ValueOf(web.FAILURE.Message(_message))
 					break
 				case "type-p":
-					point.Result[index] = reflect.ValueOf(&web.ResultObj{Success: false, Message: _message})
+					point.Result[index] = reflect.ValueOf(web.FAILURE.Message(_message).Ptr())
 					break
 				}
 				return false

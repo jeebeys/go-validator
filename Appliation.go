@@ -40,14 +40,14 @@ func main() {
 	err1 := _example.Error1(example.Param{Age: 150, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c"})
 	fmt.Println("error1: \n", err1.Error())
 	//
-	obj2 := _example.Error2(example.Param{Name: "just4it", Age: 150, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c8"})
-	fmt.Println("error2: ", obj2.Message)
+	err2 := _example.Error2(example.Param{Name: "just4it", Age: 150, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c8"})
+	fmt.Println("error2: ", err2.GetMessage())
 
 	err3 := _example.Error3(example.Param{Name: "just4it", Age: 100, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c81"})
-	fmt.Println("error3: ", err3.Message)
+	fmt.Println("error3: ", err3.GetMessage())
 
 	err4 := _example.Error4(&example.Param{Name: "just4it", Age: 100, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c81"})
-	fmt.Println("error4: ", err4.Message)
+	fmt.Println("error4: ", err4.GetMessage())
 
 	//res2, err2, res := _example.Check(example.Param{Name: "just4it", Age: 100, UUID: "2"})
 	//fmt.Println("result2: ", res2, err2)
@@ -61,11 +61,15 @@ func main() {
 	//}
 
 	fmt.Println("==========")
-	jsonObj := web.ResultObj{Success: true, Message: "message", Data: "abc", Page: 0, Pages: 1}
-	byteObj, _ := json.Marshal(jsonObj)
-	fmt.Println(string(byteObj))
+	jsonObj1 := web.SUCCESS.Message("abc")
+	byteObj1, _ := json.Marshal(jsonObj1)
+	fmt.Println(string(byteObj1))
 
-	jsonArr := web.ResultSet{}.Append("abc", "ef", "eft", jsonObj)
+	jsonObj2 := web.FAILURE.Message("abc")
+	byteObj2, _ := json.Marshal(jsonObj2)
+	fmt.Println(string(byteObj2))
+
+	jsonArr := web.ResultSet{}.Append("abc", "ef", "eft", jsonObj1, jsonObj2)
 	byteArr, _ := json.Marshal(jsonArr)
 	fmt.Println(string(byteArr))
 }
