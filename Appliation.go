@@ -61,7 +61,7 @@ func main() {
 	//}
 
 	fmt.Println("==========")
-	jsonObj := web.ResultObj{Success: true, Message: "message", Data: "abc"}
+	jsonObj := web.ResultObj{Success: true, Message: "message", Data: "abc", Page: 0, Pages: 1}
 	byteObj, _ := json.Marshal(jsonObj)
 	fmt.Println(string(byteObj))
 
