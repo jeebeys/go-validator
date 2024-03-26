@@ -1,7 +1,6 @@
 package validator
 
 import (
-	"fmt"
 	translator "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
 	"github.com/jeebeys/go-validator/aop"
@@ -34,7 +33,6 @@ func (t *Validator) Before(point *aop.JoinPoint, methodLocation string) bool {
 			break
 		}
 	}
-	fmt.Println(methodLocation)
 	for _, v := range point.Params {
 		if v.Kind() == reflect.Struct || v.Kind() == reflect.Pointer {
 			_error := t.validate.Struct(v.Interface())
