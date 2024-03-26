@@ -28,3 +28,8 @@ func (t *Example) Error2(par Param) web.ResultObj {
 func (t *Example) Error3(par Param) *web.ResultObj {
 	return &web.ResultObj{}
 }
+
+// @Validate
+func (t *Example) Error4(par *Param) *web.ResultObj {
+	return &web.ResultObj{}
+}

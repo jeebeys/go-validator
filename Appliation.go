@@ -37,14 +37,17 @@ func main() {
 
 	_example := new(example.Example)
 
-	err1 := _example.Error1(example.Param{Age: 150, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c8"})
-	fmt.Println("error1: ", err1.Error())
+	err1 := _example.Error1(example.Param{Age: 150, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c"})
+	fmt.Println("error1: \n", err1.Error())
 	//
 	obj2 := _example.Error2(example.Param{Name: "just4it", Age: 150, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c8"})
 	fmt.Println("error2: ", obj2.Message)
 
 	err3 := _example.Error3(example.Param{Name: "just4it", Age: 100, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c81"})
 	fmt.Println("error3: ", err3.Message)
+
+	err4 := _example.Error4(&example.Param{Name: "just4it", Age: 100, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c81"})
+	fmt.Println("error4: ", err4.Message)
 
 	//res2, err2, res := _example.Check(example.Param{Name: "just4it", Age: 100, UUID: "2"})
 	//fmt.Println("result2: ", res2, err2)
