@@ -23,7 +23,7 @@ func (r ResultObj) Data(key string, val interface{}) ResultObj {
 func (r ResultObj) Pagination(items []interface{}, total, page, size int) ResultObj {
 	r["items"] = items
 	r["total"] = total
-	r["pages"] = int64(math.Ceil(float64(total) / float64(size) * 1.0))
+	r["pages"] = int64(math.Ceil(float64(total) / float64(size)))
 	r["size"] = size
 	r["page"] = page
 	return r
