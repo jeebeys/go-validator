@@ -33,7 +33,7 @@ func main() {
 	_ = _zh_lang.RegisterDefaultTranslations(_validatorManager.GetValidate(), translator)
 	_validatorManager.RegisterTranslator(translator)
 
-	_validatorManager.Register(new(example.Example))
+	_validatorManager.Register((*example.Example)(nil))
 
 	_example := new(example.Example)
 
@@ -46,7 +46,7 @@ func main() {
 	err3 := _example.Error3(example.Param{Name: "just4it", Age: 100, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c81"})
 	fmt.Println("error3: ", err3.GetMessage())
 
-	err4 := _example.Error4(&example.Param{Name: "just4it", Age: 100, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c81"})
+	err4 := _example.Error4(&example.Param{Name: "just4it", Age: 100, UUID: "6ba7b810-9dad-11d1-80b4-00c04fd430c8"})
 	fmt.Println("error4: ", err4.GetMessage())
 
 	//res2, err2, res := _example.Check(example.Param{Name: "just4it", Age: 100, UUID: "2"})

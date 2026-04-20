@@ -7,6 +7,10 @@ var (
 	FAILURE = ResultObj{}.Data("success", false)
 )
 
+func NewResultObj(success bool) ResultObj {
+	return ResultObj{}.Data("success", success)
+}
+
 type ResultObj map[string]interface {
 }
 
@@ -30,6 +34,9 @@ func (r ResultObj) Pagination(items []interface{}, total, page, size int) Result
 }
 
 func (r ResultObj) GetMessage() string {
+	if r["message"] == nil {
+		return "no error"
+	}
 	return r["message"].(string)
 }
 
