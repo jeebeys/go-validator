@@ -2,7 +2,8 @@ package example
 
 import (
 	"errors"
-	"github.com/jeebeys/go-validator/web"
+
+	"github.com/jeebeys/go-response/response"
 )
 
 type Example struct {
