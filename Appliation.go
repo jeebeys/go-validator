@@ -3,15 +3,16 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"reflect"
+	"regexp"
+
 	"github.com/go-playground/locales/zh"
 	ut "github.com/go-playground/universal-translator"
 	"github.com/go-playground/validator/v10"
 	_zh_lang "github.com/go-playground/validator/v10/translations/zh"
+	web "github.com/jeebeys/go-response/response"
 	"github.com/jeebeys/go-validator/example"
 	_validator "github.com/jeebeys/go-validator/validator"
-	"github.com/jeebeys/go-validator/web"
-	"reflect"
-	"regexp"
 )
 
 // go mod init github.com/jeebeys/go-validator
@@ -61,11 +62,11 @@ func main() {
 	//}
 
 	fmt.Println("==========")
-	jsonObj1 := web.SUCCESS.Message("abc")
+	jsonObj1 := web.NewResultObj(true).Message("abc")
 	byteObj1, _ := json.Marshal(jsonObj1)
 	fmt.Println(string(byteObj1))
 
-	jsonObj2 := web.FAILURE.Message("abc")
+	jsonObj2 := web.NewResultObj(true).Message("abc")
 	byteObj2, _ := json.Marshal(jsonObj2)
 	fmt.Println(string(byteObj2))
 

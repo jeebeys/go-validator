@@ -1,12 +1,13 @@
 package validator
 
 import (
-	translator "github.com/go-playground/universal-translator"
-	"github.com/go-playground/validator/v10"
-	"github.com/jeebeys/go-validator/aop"
-	"github.com/jeebeys/go-validator/web"
 	"reflect"
 	"strings"
+
+	translator "github.com/go-playground/universal-translator"
+	"github.com/go-playground/validator/v10"
+	web "github.com/jeebeys/go-response/response"
+	"github.com/jeebeys/go-validator/aop"
 )
 
 var methodStructMap = make(map[string]*joinPointStructInfo)
@@ -47,10 +48,10 @@ func (t *Validator) Before(point *aop.JoinPoint, methodLocation string) bool {
 					point.Result[index] = reflect.ValueOf(_error)
 					break
 				case "type-o":
-					point.Result[index] = reflect.ValueOf(web.FAILURE.Message(_message))
+					point.Result[index] = reflect.ValueOf(web.NewResultObj(false).Message(_message))
 					break
 				case "type-p":
-					point.Result[index] = reflect.ValueOf(web.FAILURE.Message(_message).Ptr())
+					point.Result[index] = reflect.ValueOf(web.NewResultObj(false).Message(_message).Ptr())
 					break
 				}
 				return false
