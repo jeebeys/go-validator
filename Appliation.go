@@ -18,7 +18,7 @@ import (
 // go mod init github.com/jeebeys/go-validator
 // -gcflags=-l
 func main() {
-	scanPath := `D:\src\workspace.golang.project\go-validator\example`
+	scanPath := `D:\src\workspace.golang.library\go-validator\example`
 	_validatorManager := _validator.NewValidatorManager(_validator.ValidatorConfig{ScanPath: scanPath})
 
 	_ = _validatorManager.GetValidate().RegisterValidation("uuid", func(fl validator.FieldLevel) bool {
